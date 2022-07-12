@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ja">
+
+<head>
+  <object th:include="/fragment/head.html::meta-fragment" th:remove="tag"></object>
+  <title>NCCCS (Nurses' Care Coordination Competency Scale)</title>
+</head>
+
+<body>
+  <div th:include="/fragment/header.html::fcontent" th:remove="tag"></div>
+  <div class="container" th:fragment="fcontent">
+    <div class="row mt-2">
+      <div class="col-12">
+        NCCCS (Nurses' Care Coordination Competency Scale) のお試しサイトです．
+        <form id="ncccs-form" class="card p-4">
+          <input type="text" class="form-control" placeholder="User ID" aria-label="UserId" required readonly
+            value="user1">
+          <input class="submit-for-validation" style="display: none" type="submit" formmethod="GET">
+          <button id="btn-login-submit" type="button" class="btn btn-primary">ログイン</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

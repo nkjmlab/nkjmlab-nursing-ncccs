@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ja">
+
+<head>
+  <object th:include="/fragment/head.html::meta-fragment" th:remove="tag"></object>
+  <title>NCCCS (Nurses' Care Coordination Competency Scale)</title>
+</head>
+
+<body>
+  <div th:include="/fragment/header.html::fcontent" th:remove="tag"></div>
+  <div class="container" th:fragment="fcontent">
+    <div class="row mt-2">
+      <div class="col-12">
+        <form id="ncccs-form" class="card p-4" onsubmit="return false;">
+          <div class="input-group">
+            <span class="input-group-text">ユーザID</span>
+            <input type="text" id="input-user-id" class="form-control" value="user1" required readonly>
+          </div>
+          <div class="input-group">
+            <span class="input-group-text">入力日</span>
+            <input type="date" id="input-date" class="form-control" value="2022-07-22" required>
+          </div>
+          <hr>
+          <div th:each="q:${#numbers.sequence(1,6)}" class="mb-3">
+            <h3 th:id="|q-text-${q}|" th:text="|Q${q}.|" th:data-q="${q}"></h3>
+            <select th:id="|ncccs-input-${q}|" class="form-select mb-3 ncccs-select" required>
+              <option disabled selected value="">選択肢を選んで下さい</option>
+              <option th:each="i:${#numbers.sequence(1,5)}" th:value="${i}" th:text="${i}"></option>
+            </select>
+          </div>
+          <input class="submit-for-validation" style="display: none" type="submit" formmethod="GET">
+          <button id="btn-answers-submit" type="button" class="btn btn-primary">送信</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

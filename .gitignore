@@ -1,0 +1,17 @@
+/.settings
+/bin
+/target
+/student
+.classpath
+.project
+*.css.map
+.sass-cache
+*.mp3
+/data
+/logs
+/.dropbox
+/desktop.ini
+/src/main/resources/conf/*.json
+/src/main/resources/conf/*.csv
+/src/main/resources/conf/*.conf
+/src/main/resources/.vscode

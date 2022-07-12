@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ja">
+
+<head>
+  <object th:include="/fragment/head.html::meta-fragment" th:remove="tag"></object>
+  <title>NCCCS (Nurses' Care Coordination Competency Scale)</title>
+</head>
+
+<body>
+  <div th:include="/fragment/header.html::fcontent" th:remove="tag"></div>
+  <div class="container">
+    <div class="row mt-2">
+      <div class="col-12">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+              type="button" role="tab" aria-controls="pills-home" aria-selected="true">ホーム</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+              type="button" role="tab" aria-controls="pills-profile" aria-selected="false">入力</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-result-tab" data-bs-toggle="pill" data-bs-target="#pills-result"
+              type="button" role="tab" aria-controls="pills-result" aria-selected="false">結果</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div th:include="home-ncccs.html::fcontent" th:remove="tag"></div>
+          </div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div th:include="input-ncccs.html::fcontent" th:remove="tag"></div>
+          </div>
+          <div class="tab-pane fade" id="pills-result" role="tabpanel" aria-labelledby="pills-result-tab">
+            <div th:include="result-ncccs.html::fcontent" th:remove="tag"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
