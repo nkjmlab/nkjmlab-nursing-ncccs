@@ -1,73 +1,10 @@
 @charset "utf-8";
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
-@font-face {
-  font-family: "Yu Gothic";
-  font-weight: 100;
-  src: local("Yu Gothic Medium");
-}
-
-@font-face {
-  font-family: "Yu Gothic";
-  font-weight: 200;
-  src: local("Yu Gothic Medium");
-}
-
-@font-face {
-  font-family: "Yu Gothic";
-  font-weight: 300;
-  src: local("Yu Gothic Medium");
-}
-
-@font-face {
-  font-family: "Yu Gothic";
-  font-weight: 400;
-  src: local("Yu Gothic Medium");
-}
-
-@font-face {
-  font-family: "Yu Gothic";
-  font-weight: bold;
-  src: local("Yu Gothic Bold");
-}
-
-@font-face {
-  font-family: "Yu Mincho";
-  font-weight: 100;
-  src: local("Yu Mincho Medium");
-}
-
-@font-face {
-  font-family: "Yu Mincho";
-  font-weight: 200;
-  src: local("Yu Mincho Medium");
-}
-
-@font-face {
-  font-family: "Yu Mincho";
-  font-weight: 300;
-  src: local("Yu Mincho Medium");
-}
-
-@font-face {
-  font-family: "Yu Mincho";
-  font-weight: 400;
-  src: local("Yu Mincho Medium");
-}
-
-@font-face {
-  font-family: "Yu Mincho";
-  font-weight: bold;
-  src: local("Yu Mincho Bold");
-}
-
 .mincho {
   font-family: 'Noto Serif JP', serif;
 }
 
-html,
-body {
+html, body {
   touch-action: manipulation;
   overscroll-behavior-y: contain;
   font-family: -apple-system, BlinkMacSystemFont, "游ゴシック体", YuGothic, "Yu Gothic M", "游ゴシック Medium",

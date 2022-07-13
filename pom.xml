@@ -115,6 +115,32 @@
       <version>3.12.0</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.webjars.npm</groupId>
+      <artifactId>jquery</artifactId>
+      <version>3.6.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars.npm</groupId>
+      <artifactId>bootstrap</artifactId>
+      <version>5.2.0-beta1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars.npm</groupId>
+      <artifactId>sweetalert2</artifactId>
+      <version>11.4.18</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars.npm</groupId>
+      <artifactId>chart.js</artifactId>
+      <version>3.8.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars.npm</groupId>
+      <artifactId>fortawesome__fontawesome-free</artifactId>
+      <version>5.15.4</version>
+    </dependency>
+
     <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>

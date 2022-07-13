@@ -84,6 +84,7 @@ public class NcccsApplication {
       config.addStaticFiles(WEBROOT_DIR_NAME, Location.CLASSPATH);
       config.autogenerateEtags = true;
       config.enableCorsForAllOrigins();
+      config.enableWebjars();
     });
 
 
