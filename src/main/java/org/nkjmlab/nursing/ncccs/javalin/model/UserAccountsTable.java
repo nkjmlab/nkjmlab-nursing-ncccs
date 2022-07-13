@@ -15,15 +15,22 @@ public class UserAccountsTable extends BasicH2Table<UserAccount> {
     super(sorm, UserAccount.class);
   }
 
-
-
   @OrmRecord
-  public static record UserAccount(@PrimaryKey String userId, String userName,
-      LocalDateTime createdAt) {
+  public static record UserAccount(@PrimaryKey String id, String password,
+      LocalDateTime lastLoginAt) {
 
     public UserAccount() {
       this("", "", LocalDateTime.MIN);
     }
+
+    public boolean validate(String password) {
+      return password.equals(password);
+    }
+
+    public UserAccount createUpdateLastLogin(LocalDateTime lastLoginAt) {
+      return new UserAccount(id, password, lastLoginAt);
+    }
+
   }
 
 

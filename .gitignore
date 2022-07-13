@@ -7,6 +7,7 @@
 *.css.map
 .sass-cache
 *.mp3
+/pom.xml.versionsBackup
 /data
 /logs
 /.dropbox

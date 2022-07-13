@@ -111,6 +111,7 @@ function swalAlert(title, text, type, callback, confirmButtonText) {
     title: title,
     html: text ? text : null,
     type: type ? type : null,
+    icon: type ? type : null,
     confirmButtonText: confirmButtonText ? confirmButtonText : "OK"
   }).then((result) => {
     if (!callback) {

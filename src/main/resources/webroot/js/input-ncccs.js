@@ -29,6 +29,7 @@ $(function () {
 
         new JsonRpcClient(new JsonRpcRequest(getJsonRpcUrl(), "sendAnswers",
             [userId, answers], () => {
+                swalAlert("回答を登録しました", "", "success", e => $("#pills-result-tab").trigger('click'));
             }, (data, textStatus, errorThrown) => swalAlert("エラー", "データの送信に失敗しました", "error", e => { }))).rpc()
     }
 

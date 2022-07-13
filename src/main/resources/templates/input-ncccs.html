@@ -11,11 +11,17 @@
   <div class="container" th:fragment="fcontent">
     <div class="row mt-2">
       <div class="col-12">
+        <p>NCCCSを登録します．1日に登録出来るNCCCSデータは1つだけです．同じ日に複数回登録すると，前のデータは新しいデータで上書きされます．</p>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-12">
         <form id="ncccs-form" class="card p-4" onsubmit="return false;">
           <div class="input-group">
             <span class="input-group-text">ユーザID</span>
             <input type="text" id="input-user-id" class="form-control" value="user1" required readonly>
           </div>
+          <hr>
           <div class="input-group">
             <span class="input-group-text">入力日</span>
             <input type="date" id="input-date" class="form-control" value="2022-07-22" required>
@@ -29,7 +35,7 @@
             </select>
           </div>
           <input class="submit-for-validation" style="display: none" type="submit" formmethod="GET">
-          <button id="btn-answers-submit" type="button" class="btn btn-primary">送信</button>
+          <button id="btn-answers-submit" type="button" class="btn btn-primary">登録</button>
         </form>
       </div>
     </div>

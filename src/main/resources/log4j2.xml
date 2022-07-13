@@ -2,7 +2,7 @@
 <!DOCTYPE configuration>
 <configuration status="OFF">
   <Properties>
-    <property name="app_name">nkjmlab-go</property>
+    <property name="app_name">ncccs</property>
     <property name="log_dir">logs</property>
     <property name="log_level">DEBUG</property>
     <property name="root_log_level">INFO</property>

@@ -5,10 +5,10 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 import org.nkjmlab.nursing.ncccs.javalin.jsonrpc.NcccsRpcService;
+import org.nkjmlab.nursing.ncccs.javalin.jsonrpc.UserAccountRpcService;
 import org.nkjmlab.nursing.ncccs.javalin.model.NcccsAnswersTable;
 import org.nkjmlab.nursing.ncccs.javalin.model.UserAccountsTable;
 import org.nkjmlab.nursing.ncccs.javalin.model.UserAccountsTable.UserAccount;
-import org.nkjmlab.nursing.ncccs.javalin.websocket.WebsocketSessionsManager;
 import org.nkjmlab.sorm4j.Sorm;
 import org.nkjmlab.util.h2.H2LocalDataSourceFactory;
 import org.nkjmlab.util.h2.H2ServerUtils;
@@ -87,24 +87,11 @@ public class NcccsApplication {
     });
 
 
-    app.ws("/websocket/checkcon", ws -> {
-      ws.onConnect(ctx6 -> log.trace("{}", ctx6.session.getUpgradeRequest().getRequestURI()));
-    });
 
-    WebsocketSessionsManager webSocketManager =
-        new WebsocketSessionsManager(factory.createInMemoryModeDataSource());
-
-    app.ws("/websocket/state", ws -> {
-      ws.onConnect(ctx -> webSocketManager.onConnect(ctx.session, ctx.queryParam("userId")));
-      ws.onClose(ctx -> webSocketManager.onClose(ctx.session, ctx.status(), ctx.reason()));
-      ws.onError(ctx -> webSocketManager.onError(ctx.session, ctx.error()));
-      ws.onMessage(ctx -> webSocketManager.onMessage(ctx));
-    });
-
-    UserAccountsTable userAccountsTable = new UserAccountsTable(Sorm.create(fileDbDataSource));
     NcccsAnswersTable answersTable = new NcccsAnswersTable(Sorm.create(fileDbDataSource));
-    NcccsRpcService ncccsService =
-        new NcccsRpcService(webSocketManager, userAccountsTable, answersTable);
+    answersTable.createTableIfNotExists().createIndexesIfNotExists();
+
+    NcccsRpcService ncccsService = new NcccsRpcService(answersTable);
     JsonRpcService jsonRpcService = new JsonRpcService(getDefaultJacksonMapper());
 
     app.post("/app/json/NcccsRpcService", ctx -> {
@@ -113,6 +100,19 @@ public class NcccsApplication {
       String ret = getDefaultJacksonMapper().toJson(jres);
       ctx.result(ret).contentType("application/json");
     });
+
+    UserAccountsTable userAccountsTable = new UserAccountsTable(Sorm.create(fileDbDataSource));
+    userAccountsTable.createTableIfNotExists().createIndexesIfNotExists();
+
+    app.post("/app/json/UserAccountRpcService", ctx -> {
+      JsonRpcRequest jreq = jsonRpcService.toJsonRpcRequest(ctx.req);
+      JsonRpcResponse jres = jsonRpcService
+          .callHttpJsonRpc(new UserAccountRpcService(userAccountsTable, ctx.req), jreq, ctx.res);
+      String ret = getDefaultJacksonMapper().toJson(jres);
+      ctx.result(ret).contentType("application/json");
+    });
+
+
     app.get("/app", ctx1 -> ctx1.redirect("/app/index.html"));
 
     app.get("/app/<pageName>", ctx -> {

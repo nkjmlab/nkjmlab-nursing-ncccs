@@ -5,27 +5,16 @@ import java.util.List;
 import org.nkjmlab.nursing.ncccs.javalin.jsonrpc.NcccsRpcService.ChartData.DataSet;
 import org.nkjmlab.nursing.ncccs.javalin.model.NcccsAnswersTable;
 import org.nkjmlab.nursing.ncccs.javalin.model.NcccsAnswersTable.NcccsAnswer;
-import org.nkjmlab.nursing.ncccs.javalin.model.UserAccountsTable;
-import org.nkjmlab.nursing.ncccs.javalin.websocket.WebsocketSessionsManager;
 
 public class NcccsRpcService implements NcccsServiceInterface {
   private static final org.apache.logging.log4j.Logger log =
       org.apache.logging.log4j.LogManager.getLogger();
 
-
-  private final WebsocketSessionsManager webSocketManager;
-  private final UserAccountsTable userAccountsTable;
   private final NcccsAnswersTable answersTable;
 
 
-  public NcccsRpcService(WebsocketSessionsManager webSocketManager,
-      UserAccountsTable userAccountsTable, NcccsAnswersTable answersTable) {
-    this.webSocketManager = webSocketManager;
-    this.userAccountsTable = userAccountsTable;
+  public NcccsRpcService(NcccsAnswersTable answersTable) {
     this.answersTable = answersTable;
-
-    userAccountsTable.createTableIfNotExists().createIndexesIfNotExists();
-    answersTable.createTableIfNotExists().createIndexesIfNotExists();
   }
 
 

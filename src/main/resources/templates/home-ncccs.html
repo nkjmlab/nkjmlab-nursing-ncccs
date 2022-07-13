@@ -11,10 +11,13 @@
   <div class="container" th:fragment="fcontent">
     <div class="row mt-2">
       <div class="col-12">
-        NCCCS (Nurses' Care Coordination Competency Scale) のお試しサイトです．
-        <form id="ncccs-form" class="card p-4">
-          <input type="text" class="form-control" placeholder="User ID" aria-label="UserId" required readonly
-            value="user1">
+        <p>NCCCS (Nurses' Care Coordination Competency Scale) のお試しサイトです．</p>
+        <p>現在はログインする必要はありません．user1で固定です．</p>
+        <form id="ncccs-form" class="rounded border p-4">
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="User ID" aria-label="UserId" required readonly
+              value="user1">
+          </div>
           <input class="submit-for-validation" style="display: none" type="submit" formmethod="GET">
           <button id="btn-login-submit" type="button" class="btn btn-primary">ログイン</button>
         </form>
