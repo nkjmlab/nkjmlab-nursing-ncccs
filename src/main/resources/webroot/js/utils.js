@@ -1,19 +1,6 @@
 const KEY_USER_ID = "user_id";
 
 
-function getWebSocketBaseUrl() {
-  function createWebSocketUrl(protocol) {
-    const u = parseUri(document.URL);
-    const urlPrefix = protocol + "://" + u.authority + "/";
-    return urlPrefix + "websocket/state";
-  }
-  if (parseUri(location).protocol === "https") {
-    return createWebSocketUrl("wss");
-  } else {
-    return createWebSocketUrl("ws");
-  }
-}
-
 function addTempItems(itemsName, items) {
   setTempItems(itemsName, getTempItems(itemsName).concat(items))
 }
@@ -179,18 +166,13 @@ function toFormattedDateAndTime(milliseconds) {
   return str;
 }
 
-function getJsonRpcUrl() {
-  const u = parseUri(document.URL);
-  const urlPrefix = u.protocol + "://" + u.authority + "/"
-    + u.directory.split("/")[1] + "/";
-  return urlPrefix + "json/NcccsRpcService";
+function getJsonNcccsRpcUrl() {
+  return getBaseUrl(0) + "/app/json/NcccsRpcService";
 }
-
-
 
 function getBaseUrl(depth) {
   const u = parseUri(document.URL);
-  const urlPrefix = u.protocol + "://" + u.authority + "/" + u.directory.split("/")[depth] + "/";
+  const urlPrefix = u.protocol + "://" + u.authority + u.directory.split("/").slice(0, depth + 1).join("/");
   return urlPrefix;
 }
 

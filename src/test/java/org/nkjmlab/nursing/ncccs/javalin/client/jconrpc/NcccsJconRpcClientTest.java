@@ -1,8 +1,9 @@
-package org.nkjmlab.nursing.ncccs.javalin.client.websocket;
+package org.nkjmlab.nursing.ncccs.javalin.client.jconrpc;
 
 import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.nkjmlab.nursing.ncccs.javalin.client.jsonrpc.NcccsJconRpcClient;
 import org.nkjmlab.nursing.ncccs.javalin.model.NcccsAnswersTable.NcccsAnswer;
 
 class NcccsJconRpcClientTest {

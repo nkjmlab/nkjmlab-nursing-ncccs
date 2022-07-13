@@ -1,9 +1,9 @@
-package org.nkjmlab.nursing.ncccs.javalin.client.websocket;
+package org.nkjmlab.nursing.ncccs.javalin.client.jsonrpc;
 
 import java.net.URL;
 import java.time.LocalDate;
 import org.nkjmlab.nursing.ncccs.javalin.NcccsApplication;
-import org.nkjmlab.nursing.ncccs.javalin.jsonrpc.NcccsRpcService.ChartData;
+import org.nkjmlab.nursing.ncccs.javalin.jsonrpc.NcccsRpcService.NcccsChartData;
 import org.nkjmlab.nursing.ncccs.javalin.jsonrpc.NcccsServiceInterface;
 import org.nkjmlab.nursing.ncccs.javalin.model.NcccsAnswersTable.NcccsAnswer;
 import org.nkjmlab.util.java.net.UrlUtils;
@@ -35,7 +35,7 @@ public class NcccsJconRpcClient implements NcccsServiceInterface {
   }
 
   @Override
-  public ChartData getChartData(String userId) {
+  public NcccsChartData getChartData(String userId) {
     return client.getChartData(userId);
   }
 

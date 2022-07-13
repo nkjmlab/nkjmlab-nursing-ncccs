@@ -12,5 +12,5 @@ $(function () {
 
     $("#ncccs-form input").prop("selected", false);
     $("#input-date").val(getCurrentDate());
-
 });
+

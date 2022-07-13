@@ -1,7 +1,7 @@
 package org.nkjmlab.nursing.ncccs.javalin.jsonrpc;
 
 import java.time.LocalDate;
-import org.nkjmlab.nursing.ncccs.javalin.jsonrpc.NcccsRpcService.ChartData;
+import org.nkjmlab.nursing.ncccs.javalin.jsonrpc.NcccsRpcService.NcccsChartData;
 import org.nkjmlab.nursing.ncccs.javalin.model.NcccsAnswersTable.NcccsAnswer;
 
 public interface NcccsServiceInterface {
@@ -11,7 +11,7 @@ public interface NcccsServiceInterface {
 
   NcccsAnswer[] getAnswers(String userId, LocalDate inputDate);
 
-  ChartData getChartData(String userId);
+  NcccsChartData getChartData(String userId);
 
 
 

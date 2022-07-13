@@ -2,7 +2,7 @@ package org.nkjmlab.nursing.ncccs.javalin.jsonrpc;
 
 import java.time.LocalDate;
 import java.util.List;
-import org.nkjmlab.nursing.ncccs.javalin.jsonrpc.NcccsRpcService.ChartData.DataSet;
+import org.nkjmlab.nursing.ncccs.javalin.jsonrpc.NcccsRpcService.NcccsChartData.DataSet;
 import org.nkjmlab.nursing.ncccs.javalin.model.NcccsAnswersTable;
 import org.nkjmlab.nursing.ncccs.javalin.model.NcccsAnswersTable.NcccsAnswer;
 
@@ -34,7 +34,7 @@ public class NcccsRpcService implements NcccsServiceInterface {
 
 
   @Override
-  public ChartData getChartData(String userId) {
+  public NcccsChartData getChartData(String userId) {
     List<LocalDate> inputDates = answersTable.selectInputDateByUserId(userId);
 
 
@@ -48,11 +48,11 @@ public class NcccsRpcService implements NcccsServiceInterface {
     DataSet d3 = new DataSet("カテゴリ3", inputDates.stream()
         .map(d -> answersTable.getScore(userId, d, 5, 6)).toArray(Integer[]::new), "#48f");
 
-    return new ChartData(labels, new DataSet[] {d1, d2, d3});
+    return new NcccsChartData(labels, new DataSet[] {d1, d2, d3});
   }
 
 
-  public static record ChartData(String[] labels, DataSet[] datasets) {
+  public static record NcccsChartData(String[] labels, DataSet[] datasets) {
     public static record DataSet(String label, Integer[] data, String borderColor) {
 
     }

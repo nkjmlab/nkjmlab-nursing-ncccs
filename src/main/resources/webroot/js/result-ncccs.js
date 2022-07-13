@@ -15,7 +15,7 @@ $(function () {
     });
 
     function drawChart(userId) {
-        new JsonRpcClient(new JsonRpcRequest(getJsonRpcUrl(), "getChartData",
+        new JsonRpcClient(new JsonRpcRequest(getJsonNcccsRpcUrl(), "getChartData",
             [userId], data => {
                 const json = data.result;
                 console.log(json);

@@ -81,3 +81,15 @@ class UserStateWebSocket {
 }
 
 
+function getWebSocketBaseUrl() {
+  function createWebSocketUrl(protocol) {
+    const u = parseUri(document.URL);
+    const urlPrefix = protocol + "://" + u.authority + "/";
+    return urlPrefix + "websocket/state";
+  }
+  if (parseUri(location).protocol === "https") {
+    return createWebSocketUrl("wss");
+  } else {
+    return createWebSocketUrl("ws");
+  }
+}
